@@ -87,11 +87,11 @@ public class MergePdfFiles {
 		try {
 			// PREPARA OS ARQUIVOS PDF QUE DESEJA-SE COMBINAR
 			List<InputStream> inputPdfList = new ArrayList<InputStream>();
-			inputPdfList.add(new FileInputStream("C:/Users/rafam/Documents/pg01.pdf"));
-			inputPdfList.add(new FileInputStream("C:/Users/rafam/Documents/pg02.pdf"));
+			inputPdfList.add(new FileInputStream("C:/Users/Rafa/Documents/INF320-Atividade06-1.pdf"));
+			inputPdfList.add(new FileInputStream("C:/Users/Rafa/Documents/INF320-Atividade06-2.pdf"));
 
 			// PREPARA O OUTPUT QUE RECEBERA O ARQUIVO COMBINADO
-			OutputStream outputStream = new FileOutputStream("C:/Users/rafam/Documents/merged-file.pdf");
+			OutputStream outputStream = new FileOutputStream("C:/Users/Rafa/Documents/INF320-Atividade06.pdf");
 
 			// CHAMA O METODO PARA COMBINAR OS ARQUIVOS
 			mergePdfFiles(inputPdfList, outputStream);
