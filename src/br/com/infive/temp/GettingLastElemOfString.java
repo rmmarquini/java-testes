@@ -2,9 +2,11 @@ package br.com.infive.temp;
 
 public class GettingLastElemOfString {
 	
+	private final static String className = GettingLastElemOfString.class.getCanonicalName();
+	
 	public static void main(String[] args) {
-		String str = "br.com.afip.robo.VerificaFinalizar";
-		System.out.println(str.substring(str.lastIndexOf(".") + 1).trim());
+		System.out.println(className);
+		System.out.println(className.substring(className.lastIndexOf(".") + 1).trim());
 	}
-
+	
 }

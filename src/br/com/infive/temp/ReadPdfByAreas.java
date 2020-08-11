@@ -26,7 +26,7 @@ public class ReadPdfByAreas {
 	
 	public static void main(String[] args) throws IOException {
 		
-		PDDocument documento = PDDocument.load(new File("C:\\Users\\rafam\\Downloads\\neogrid.pdf"));
+		PDDocument documento = PDDocument.load(new File("C:\\Users\\rafam\\Downloads\\arquivo.pdf"));
 		try {
 			
 			if (!documento.isEncrypted()) {

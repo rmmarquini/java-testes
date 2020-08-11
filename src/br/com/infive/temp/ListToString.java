@@ -8,9 +8,9 @@ public class ListToString {
 		List<String> lst = new ArrayList<String>();
 		String str = null;
 		
-		lst.add("rafa.mardegan@gmail.com");
-		lst.add("moniquebiotto@gmail.com");
-		lst.add("andrusfk2@gmail.com");
+		lst.add("contato@exemplo.com");
+		lst.add("fulano@email.com");
+		lst.add("outro@email.com");
 		
 		str = String.join(", ", lst);
 		
