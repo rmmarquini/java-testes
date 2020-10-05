@@ -51,6 +51,9 @@ public class IntMain {
 			setCsvOs(csvOs);
 			System.out.println("CSV GERADO... " + getCsvOs());
 			
+			System.out.println("----- FIM DA EXECUCAO -----");
+			System.out.println(new String(new char[50]).replace("\0", "-"));
+			
 		} catch (InvalidFormatException e) {
 			e.printStackTrace(new PrintWriter(writer));
 			System.out.println(writer.toString());
