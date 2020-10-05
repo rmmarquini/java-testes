@@ -9,6 +9,8 @@ import java.io.Writer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
 public class IntMain {
 	
 	private static Writer writer = new StringWriter();
@@ -16,12 +18,11 @@ public class IntMain {
 	protected static String xlsxFilename;
 	protected static String csvFilename;
 	protected static Map<String, Object> entryDataMap;
-	protected static Map<Integer, String> csvDataMap;
 	protected static String columnsRange;
 	protected static OutputStream xlsxOs;
 	protected static OutputStream csvOs;
 	
-	public static void main(String[] args) throws FileNotFoundException, IOException {
+	public static void main(String[] args) throws IOException, FileNotFoundException, InvalidFormatException {
 		
 		try {
 			
@@ -46,12 +47,13 @@ public class IntMain {
 			
 			System.out.println(new String(new char[50]).replace("\0", "-"));
 			System.out.println("CONVERTENDO O XLSX PARA CSV");
-			setCsvDataMap(csvDataMap);
-			System.out.println("CSV FORMATADO... " + getCsvDataMap());
 			setCsvFilename(csvFilename);
 			setCsvOs(csvOs);
 			System.out.println("CSV GERADO... " + getCsvOs());
 			
+		} catch (InvalidFormatException e) {
+			e.printStackTrace(new PrintWriter(writer));
+			System.out.println(writer.toString());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace(new PrintWriter(writer));
 			System.out.println(writer.toString());
@@ -180,24 +182,14 @@ public class IntMain {
 		IntMain.xlsxOs = xlsxOs;
 	}
 
-	public static Map<Integer, String> getCsvDataMap() {
-		return csvDataMap;
-	}
-
-	private static void setCsvDataMap(Map<Integer, String> csvDataMap) throws FileNotFoundException, IOException {
-		ConvertXLSXToCSVFormat csvFormat = new ConvertXLSXToCSVFormat();
-		csvDataMap = csvFormat.convertXLSXToCSV();
-		IntMain.csvDataMap = csvDataMap;
-	}
-
 	public static OutputStream getCsvOs() {
 		return csvOs;
 	}
 
-	public static void setCsvOs(OutputStream csvOs) throws FileNotFoundException, IOException {
-		GenerateCSVFromLinkedHashMapData convertCSV = new GenerateCSVFromLinkedHashMapData();
-		csvOs = convertCSV.convertDataToCSV();
+	public static void setCsvOs(OutputStream csvOs) throws FileNotFoundException, InvalidFormatException, IOException {
+		GenerateCSVFromXLSX generateCSV = new GenerateCSVFromXLSX();
+		csvOs = generateCSV.convertCSV();
 		IntMain.csvOs = csvOs;
 	}
-
+	
 }
